@@ -57,9 +57,12 @@ const NavBar = () => {
       className={`${theme === "light" ? "border-bottom" : ""}`}
     >
       <Container>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Inicio</Nav.Link>
-        </Nav>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Inicio</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
         <Dropdown align="end">
           <Dropdown.Toggle variant={theme} id="theme-dropdown">
             <FaAdjust />
