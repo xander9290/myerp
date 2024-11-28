@@ -5,15 +5,34 @@ import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { FaSun, FaMoon, FaAdjust } from "react-icons/fa";
 
 const NavBar = () => {
-  const [theme, setTheme] = useState(() => {
-    const storedTheme = localStorage.getItem("theme");
-    return (
+  const [theme, setTheme] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Initialize theme on the client side
+    const storedTheme = window.localStorage.getItem("theme");
+    const preferredTheme =
       storedTheme ||
       (window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
-        : "light")
-    );
-  });
+        : "light");
+
+    setTheme(preferredTheme);
+    document.documentElement.setAttribute("data-bs-theme", preferredTheme);
+
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem("theme")) {
+        const systemTheme = e.matches ? "dark" : "light";
+        setTheme(systemTheme);
+        document.documentElement.setAttribute("data-bs-theme", systemTheme);
+      }
+    };
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    return () =>
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+  }, []);
 
   const handleThemeChange = (newTheme: string) => {
     if (newTheme === "auto") {
@@ -31,31 +50,8 @@ const NavBar = () => {
     }
   };
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-bs-theme", theme);
-
-    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem("theme")) {
-        const systemTheme = e.matches ? "dark" : "light";
-        setTheme(systemTheme);
-        document.documentElement.setAttribute("data-bs-theme", systemTheme);
-      }
-    };
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQuery.addEventListener("change", handleSystemThemeChange);
-
-    return () =>
-      mediaQuery.removeEventListener("change", handleSystemThemeChange);
-  }, [theme]);
-
   return (
-    <Navbar
-      expand="lg"
-      bg={theme}
-      variant={theme}
-      className={`${theme === "light" ? "border-bottom" : ""}`}
-    >
+    <Navbar expand="lg" bg={theme || "light"} variant={theme || "light"}>
       <Container>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
@@ -64,7 +60,7 @@ const NavBar = () => {
           </Nav>
         </Navbar.Collapse>
         <Dropdown align="end">
-          <Dropdown.Toggle variant={theme} id="theme-dropdown">
+          <Dropdown.Toggle variant={theme || "light"} id="theme-dropdown">
             <FaAdjust />
           </Dropdown.Toggle>
           <Dropdown.Menu>
