@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { FaSun, FaMoon, FaAdjust } from "react-icons/fa";
+import NavLink, { Links } from "./nav-links";
 
 const NavBar = () => {
   const [theme, setTheme] = useState<string | null>(null);
@@ -50,14 +51,14 @@ const NavBar = () => {
     }
   };
 
+  const links: Links = [];
+
   return (
     <Navbar expand="lg" bg={theme || "light"} variant={theme || "light"}>
       <Container>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-          </Nav>
+          <NavLink links={links} />
         </Navbar.Collapse>
         <Dropdown align="end">
           <Dropdown.Toggle variant={theme || "light"} id="theme-dropdown">
