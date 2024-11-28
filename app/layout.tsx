@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "bootswatch/dist/cosmo/bootstrap.css";
 
 export const metadata: Metadata = {
   title: "Proyecto ERP",
