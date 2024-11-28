@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "bootswatch/dist/cosmo/bootstrap.css";
+import NavBar from "@/components/nav-bar";
 
 export const metadata: Metadata = {
   title: "Proyecto ERP",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className="vh-100 d-flex flex-column">
+        <NavBar />
+        <main className="flex-grow-1">{children}</main>
+      </body>
     </html>
   );
 }
