@@ -9,7 +9,7 @@ type Props = {
 
 function UiLayout({ links, children, navAside }: Props) {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid h-100">
       {navAside ? (
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-1">
