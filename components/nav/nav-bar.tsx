@@ -66,11 +66,11 @@ const NavBar = () => {
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => handleThemeChange("light")}>
               <FaSun className="me-2" />
-              Modo Claro
+              Claro
             </Dropdown.Item>
             <Dropdown.Item onClick={() => handleThemeChange("dark")}>
               <FaMoon className="me-2" />
-              Modo Oscuro
+              Oscuro
             </Dropdown.Item>
             <Dropdown.Item onClick={() => handleThemeChange("auto")}>
               <FaAdjust className="me-2" />

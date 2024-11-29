@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "bootswatch/dist/cosmo/bootstrap.css";
 import NavBar from "@/components/nav/nav-bar";
+<<<<<<< HEAD
+=======
+import ModalContainer from "@/components/modals/modal-container";
+>>>>>>> upstream/main
 
 export const metadata: Metadata = {
   title: "Proyecto ERP",
@@ -18,6 +22,7 @@ export default function RootLayout({
       <body className="vh-100 d-flex flex-column">
         <NavBar />
         <main className="flex-grow-1">{children}</main>
+        <ModalContainer />
       </body>
     </html>
   );
