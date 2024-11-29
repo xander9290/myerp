@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "bootswatch/dist/cosmo/bootstrap.css";
-import NavBar from "@/components/nav-bar";
+import NavBar from "@/components/nav/nav-bar";
 
 export const metadata: Metadata = {
   title: "Proyecto ERP",
