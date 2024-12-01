@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "bootswatch/dist/cosmo/bootstrap.css";
+import "bootswatch/dist/cerulean/bootstrap.css";
 import NavBar from "@/components/nav/nav-bar";
 import ModalContainer from "@/components/modals/modal-container";
 

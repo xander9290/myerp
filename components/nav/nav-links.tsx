@@ -31,28 +31,28 @@ function NavLink({ links }: Props) {
             aria-haspopup="true"
           >
             {link.subLinks.map((sublink, i) => (
-              <Link
-                onClick={sublink.action}
+              <NavDropdown.Item
                 key={`nav-sublink#${link.name + i}`}
-                className="dropdown-item"
+                onClick={sublink.action}
+                as={Link}
                 href={sublink.path}
               >
                 {sublink.name}
-              </Link>
+              </NavDropdown.Item>
             ))}
           </NavDropdown>
         );
       }
 
       return (
-        <Link
+        <Nav.Link
+          href={link.path}
+          as={Link}
           key={`nav-link#${link.name}`}
           onClick={handleClick}
-          className="nav-link"
-          href={link.path}
         >
           {link.name}
-        </Link>
+        </Nav.Link>
       );
     });
   };

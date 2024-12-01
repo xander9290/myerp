@@ -54,7 +54,8 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar expand="lg" bg={theme || "light"} variant={theme || "light"}>
+    // <Navbar expand="lg" bg={theme || "light"} variant={theme || "light"}>
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
