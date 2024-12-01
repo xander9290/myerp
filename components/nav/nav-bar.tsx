@@ -5,6 +5,7 @@ import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { FaSun, FaMoon, FaAdjust } from "react-icons/fa";
 import NavLink, { Links } from "./nav-links";
 import { navigation } from "@/ui/navigation";
+import Clock from "./clock";
 
 const NavBar = () => {
   const [theme, setTheme] = useState<string | null>(null);
@@ -59,6 +60,9 @@ const NavBar = () => {
         <Navbar.Collapse className="justify-content-end">
           <NavLink links={navigation} />
         </Navbar.Collapse>
+        <Navbar.Text className="text-uppercase me-1">
+          <Clock />
+        </Navbar.Text>
         <Dropdown align="end">
           <Dropdown.Toggle variant={theme || "light"} id="theme-dropdown">
             <FaAdjust />
