@@ -3,6 +3,8 @@ import "./globals.css";
 import "bootswatch/dist/cerulean/bootstrap.css";
 import NavBar from "@/components/nav/nav-bar";
 import ModalContainer from "@/components/modals/modal-container";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Proyecto ERP",
@@ -20,6 +22,7 @@ export default function RootLayout({
         <NavBar />
         <main className="flex-grow-1">{children}</main>
         <ModalContainer />
+        <ToastContainer />
       </body>
     </html>
   );
